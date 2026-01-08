@@ -1,0 +1,12 @@
+id,order,title,type,surah,ayah,arabic,transliteration,translation_ms,translation_en,repeat,session,set
+1,1,Istiazah,dua,,,أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ,A'udzu billahis-sami'il 'alim minash-shaitanir-rajim,Aku berlindung kepada Allah Yang Maha Mendengar lagi Maha Mengetahui daripada syaitan yang direjam,I seek refuge in Allah the All-Hearing and All-Knowing from the accursed devil,1,pagi|petang,sughra|kubra
+
+2,2,Al-Fatihah,quran,1,1,,Alhamdu lillahi rabbil 'alamin,Segala puji bagi Allah Tuhan sekalian alam,All praise is due to Allah Lord of the worlds,1,pagi|petang,sughra|kubra
+
+3,3,Al-Baqarah 1,quran,2,1,,Alif Lam Mim,Alif Lam Mim,Alif Lam Mim,1,pagi|petang,sughra|kubra
+4,4,Al-Baqarah 2,quran,2,2,,Dzalikal kitabu la rayba fih,Kitab ini tidak ada keraguan padanya,This is the Book in which there is no doubt,1,pagi|petang,sughra|kubra
+5,5,Al-Baqarah 3,quran,2,3,,Alladzina yu'minuna bil ghaib,Mereka yang beriman kepada yang ghaib,Those who believe in the unseen,1,pagi|petang,sughra|kubra
+6,6,Al-Baqarah 4,quran,2,4,,Walladzina yu'minuna bima unzila ilaika,Mereka yang beriman kepada apa yang diturunkan kepadamu,And who believe in what has been revealed to you,1,pagi|petang,sughra|kubra
+7,7,Al-Baqarah 5,quran,2,5,,Ulaika 'ala hudam mir rabbihim,Mereka itulah yang mendapat petunjuk dari Tuhan mereka,Those are upon guidance from their Lord,1,pagi|petang,sughra|kubra
+
+8,8,Ayat Kursi,quran,2,255,,Allahu la ilaha illa Huwa haiyyul qayyum,Allah tidak ada Tuhan selain Dia,Allah there is no deity except Him,1,pagi|petang,sughra|kubra
