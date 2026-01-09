@@ -18,8 +18,7 @@ st.set_page_config(
 # =================================================
 st.markdown("""
 <style>
-
-/* ===== Fixed Header Navigation ===== */
+/* Fixed Header Navigation */
 .nav-header {
     position: fixed;
     top: 0;
@@ -31,12 +30,12 @@ st.markdown("""
     border-bottom: 1px solid #eee;
 }
 
-/* Offset content below fixed header */
+/* Offset content below header */
 .page-content {
     margin-top: 72px;
 }
 
-/* ===== Floating Gundal Button ===== */
+/* Floating Gundal Button */
 div[data-testid="stButton"][aria-label="gundal"] {
     position: fixed;
     bottom: 90px;
@@ -65,7 +64,6 @@ div[data-testid="stButton"][aria-label="gundal"] button {
     font-size: 14px;
     z-index: 999;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -139,7 +137,7 @@ def next_item(force=False):
             st.session_state.page = "done"
 
 # =================================================
-# HEADER (STATIC TITLE)
+# HEADER
 # =================================================
 st.title("Mathurat Ticker")
 st.caption("Baca tanpa lupa.")
@@ -172,31 +170,30 @@ if st.session_state.page == "home":
 # =================================================
 elif st.session_state.page == "read":
 
-    # ---------- Fixed Header Navigation ----------
+    # Fixed Header Navigation
     st.markdown('<div class="nav-header">', unsafe_allow_html=True)
-    col1, col2, col3 = st.columns(3)
+    nav1, nav2, nav3 = st.columns(3)
 
-    with col1:
+    with nav1:
         if st.button("◀ Previous", use_container_width=True):
             if st.session_state.index > 0:
                 st.session_state.index -= 1
                 st.session_state.count = 0
 
-    with col2:
+    with nav2:
         if st.button("🏠 Home", use_container_width=True):
             go_home()
 
-    with col3:
+    with nav3:
         if st.button("Next ▶", use_container_width=True):
             next_item(force=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ---------- Content ----------
+    # Content
     st.markdown('<div class="page-content">', unsafe_allow_html=True)
 
     item = st.session_state.data[st.session_state.index]
-
     st.subheader(item["title"])
 
     if item["type"] == "quran":
@@ -220,10 +217,9 @@ elif st.session_state.page == "read":
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ---------- Gundal Floating ----------
-    st.button("📿", key="gundal", help="Tandakan bacaan", type="primary")
-
-    if st.session_state.get("gundal"):
+    # Gundal Button
+    pressed = st.button("📿", key="gundal", help="Tandakan bacaan", type="primary")
+    if pressed:
         st.session_state.count += 1
         next_item()
 
@@ -251,5 +247,4 @@ st.markdown(
     </div>
     """,
     unsafe_allow_html=True
-)
 )
