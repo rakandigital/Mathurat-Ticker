@@ -18,51 +18,86 @@ st.set_page_config(
 # =================================================
 st.markdown("""
 <style>
-/* Fixed Header Navigation */
-.nav-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    z-index: 1000;
-    padding: 8px 10px;
-    border-bottom: 1px solid #eee;
+/* Reset */
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-/* Offset content below header */
-.page-content {
-    margin-top: 72px;
+/* ===== Fixed Header ===== */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 56px;
+  background: #ffffff;
+  z-index: 9999;
+  border-bottom: 1px solid #eaeaea;
 }
 
-/* Floating Gundal Button */
-div[data-testid="stButton"][aria-label="gundal"] {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    z-index: 2000;
+.fixed-header .nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 8px 10px;
 }
 
-div[data-testid="stButton"][aria-label="gundal"] button {
-    background-color: #4f7f6f;
-    color: white;
-    border-radius: 50%;
-    width: 64px;
-    height: 64px;
-    font-size: 24px;
-    border: none;
+.fixed-header button {
+  background: #f7f9f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 6px;
+  font-size: 13px;
 }
 
-/* Footer */
+/* ===== Page Body ===== */
+.page-body {
+  margin-top: 64px;
+  padding: 0 14px 100px 14px;
+}
+
+/* ===== Arabic Text ===== */
+.arabic {
+  font-size: 28px;
+  line-height: 2.1;
+  text-align: center;
+  margin: 24px 0;
+}
+
+/* ===== Translation ===== */
+.translation {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ===== Floating Gundal ===== */
+#gundal-btn {
+  position: fixed;
+  bottom: 84px;
+  right: 18px;
+  width: 60px;
+  height: 60px;
+  background: #4f7f6f;
+  color: white;
+  font-size: 26px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  z-index: 9999;
+}
+
+/* ===== Footer ===== */
 .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #f5f7f6;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    z-index: 999;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f7f9f8;
+  border-top: 1px solid #eaeaea;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
 }
 </style>
 """, unsafe_allow_html=True)
