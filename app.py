@@ -24,6 +24,25 @@ html, body {
   padding: 0;
 }
 
+st.components.v1.html("""
+<div class="fixed-header">
+  <div class="nav">
+    <button onclick="window.parent.postMessage('prev_clicked','*')">◀ Prev</button>
+    <button onclick="window.parent.postMessage('home_clicked','*')">🏠 Home</button>
+    <button onclick="window.parent.postMessage('next_clicked','*')">Next ▶</button>
+  </div>
+</div>
+""", height=0)
+
+st.components.v1.html("""
+<button id="gundal-btn">📿</button>
+<script>
+document.getElementById("gundal-btn").onclick = function() {
+  window.parent.postMessage("gundal_clicked","*");
+};
+</script>
+""", height=0)
+
 /* ===== Fixed Header ===== */
 .fixed-header {
   position: fixed;
