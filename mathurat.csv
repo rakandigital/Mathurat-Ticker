@@ -1,60 +1,59 @@
-id,order,title,type,surah,ayah,arabic,transliteration,translation_ms,translation_en,repeat,session,set
-1,1,Isti'azah,dua,,,أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ,,Aku berlindung kepada Allah Yang Maha Mendengar lagi Maha Mengetahui daripada syaitan yang direjam,I seek refuge in Allah the All-Hearing and All-Knowing from the accursed devil,1,pagi|petang,sughra
+"id","order","title","type","surah","ayah","arabic","transliteration","translation_ms","translation_en","repeat","session","set"
+"1","1","Isti'azah","dua","","","أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ","","Aku berlindung kepada Allah Yang Maha Mendengar lagi Maha Mengetahui daripada syaitan yang direjam","I seek refuge in Allah the All-Hearing and All-Knowing from the accursed devil","1","pagi|petang","sughra"
 
-2,2,Al-Fatihah,quran,1,1,,,,1,pagi|petang,sughra
+"2","2","Al-Fatihah","quran","1","1","","","","","1","pagi|petang","sughra"
 
-3,3,Al-Baqarah 1,quran,2,1,,,,1,pagi|petang,sughra
-4,4,Al-Baqarah 2,quran,2,2,,,,1,pagi|petang,sughra
-5,5,Al-Baqarah 3,quran,2,3,,,,1,pagi|petang,sughra
-6,6,Al-Baqarah 4,quran,2,4,,,,1,pagi|petang,sughra
-7,7,Al-Baqarah 5,quran,2,5,,,,1,pagi|petang,sughra
+"3","3","Al-Baqarah 1","quran","2","1","","","","","1","pagi|petang","sughra"
+"4","4","Al-Baqarah 2","quran","2","2","","","","","1","pagi|petang","sughra"
+"5","5","Al-Baqarah 3","quran","2","3","","","","","1","pagi|petang","sughra"
+"6","6","Al-Baqarah 4","quran","2","4","","","","","1","pagi|petang","sughra"
+"7","7","Al-Baqarah 5","quran","2","5","","","","","1","pagi|petang","sughra"
 
-8,8,Al-Baqarah 255,quran,2,255,,,,1,pagi|petang,sughra
-9,9,Al-Baqarah 256,quran,2,256,,,,1,pagi|petang,sughra
-10,10,Al-Baqarah 257,quran,2,257,,,,1,pagi|petang,sughra
+"8","8","Al-Baqarah 255","quran","2","255","","","","","1","pagi|petang","sughra"
+"9","9","Al-Baqarah 256","quran","2","256","","","","","1","pagi|petang","sughra"
+"10","10","Al-Baqarah 257","quran","2","257","","","","","1","pagi|petang","sughra"
 
-11,11,Al-Baqarah 284,quran,2,284,,,,1,pagi|petang,sughra
-12,12,Al-Baqarah 285,quran,2,285,,,,1,pagi|petang,sughra
-13,13,Al-Baqarah 286,quran,2,286,,,,1,pagi|petang,sughra
+"11","11","Al-Baqarah 284","quran","2","284","","","","","1","pagi|petang","sughra"
+"12","12","Al-Baqarah 285","quran","2","285","","","","","1","pagi|petang","sughra"
+"13","13","Al-Baqarah 286","quran","2","286","","","","","1","pagi|petang","sughra"
 
-14,14,Al-Ikhlas,quran,112,1,,,,1,pagi|petang,sughra
-15,15,Al-Falaq,quran,113,1,,,,1,pagi|petang,sughra
-16,16,An-Nas,quran,114,1,,,,1,pagi|petang,sughra
+"14","14","Al-Ikhlas","quran","112","1","","","","","1","pagi|petang","sughra"
+"15","15","Al-Falaq","quran","113","1","","","","","1","pagi|petang","sughra"
+"16","16","An-Nas","quran","114","1","","","","","1","pagi|petang","sughra"
 
-17,17,Asbahna/Amsaina (Pembukaan),dua,,,أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ،، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ,,Kami memasuki pagi/petang dan kerajaan milik Allah; segala puji bagi-Nya; tiada Tuhan selain Dia Yang Esa,We enter the morning/evening and sovereignty belongs to Allah; all praise is His; there is no deity but Him alone,1,pagi|petang,sughra
+"17","17","Asbahna/Amsaina – Pembukaan","dua","","","أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ","","Kami memasuki pagi atau petang dan kerajaan milik Allah","We enter the morning or evening and sovereignty belongs to Allah","1","pagi|petang","sughra"
+"18","18","Asbahna/Amsaina – Tauhid","dua","","","لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ","","Tiada Tuhan selain Allah Yang Esa","There is no deity except Allah alone","1","pagi|petang","sughra"
+"19","19","Asbahna/Amsaina – Kekuasaan","dua","","","لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ","","Bagi-Nya kerajaan dan pujian","To Him belongs sovereignty and praise","1","pagi|petang","sughra"
 
-18,18,Asbahna/Amsaina (Kebaikan & Perlindungan),dua,,,رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ/هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ/هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهُ,,Ya Allah aku memohon kebaikan hari/malam ini dan perlindungan dari keburukannya,O Allah I ask for the good of this day/night and seek refuge from its evil,1,pagi|petang,sughra
+"20","20","Doa Kebaikan Hari","dua","","","رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ","","Aku memohon kebaikan hari ini","I ask for the good of this day","1","pagi","sughra"
+"21","21","Doa Perlindungan Hari","dua","","","وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ","","Aku berlindung daripada keburukan hari ini","I seek refuge from the evil of this day","1","pagi","sughra"
 
-19,19,Asbahna/Amsaina (Lindung Malas & Tua),dua,,,رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ,,Aku berlindung dari malas dan buruknya usia tua,I seek refuge from laziness and the evils of old age,1,pagi|petang,sughra
+"22","22","Doa Kebaikan Malam","dua","","","رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا","","Aku memohon kebaikan malam ini","I ask for the good of this night","1","petang","sughra"
+"23","23","Doa Perlindungan Malam","dua","","","وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا","","Aku berlindung daripada keburukan malam ini","I seek refuge from the evil of this night","1","petang","sughra"
 
-20,20,Asbahna/Amsaina (Azab),dua,,,رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ,,Aku berlindung dari azab neraka dan azab kubur,I seek refuge from the punishment of the Fire and the grave,1,pagi|petang,sughra
+"24","24","Lindung Malas & Tua","dua","","","رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ","","Aku berlindung dari malas dan buruknya usia tua","I seek refuge from laziness and the evils of old age","1","pagi|petang","sughra"
+"25","25","Lindung Azab","dua","","","رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ","","Aku berlindung dari azab neraka dan kubur","I seek refuge from the punishment of the Fire and the grave","1","pagi|petang","sughra"
 
-21,21,Kesejahteraan Diri (1),dua,,,اللَّهُمَّ عَافِنِي فِي بَدَنِي,,Ya Allah sejahterakan tubuhku,O Allah grant me health in my body,1,pagi|petang,sughra
-22,22,Kesejahteraan Diri (2),dua,,,اللَّهُمَّ عَافِنِي فِي سَمْعِي وَبَصَرِي,,Sejahterakan pendengaran dan penglihatanku,Grant me health in my hearing and sight,1,pagi|petang,sughra
+"26","26","Kesejahteraan Badan","dua","","","اللَّهُمَّ عَافِنِي فِي بَدَنِي","","Sejahterakan tubuh badanku","Grant me health in my body","1","pagi|petang","sughra"
+"27","27","Kesejahteraan Pendengaran","dua","","","اللَّهُمَّ عَافِنِي فِي سَمْعِي","","Sejahterakan pendengaranku","Grant me health in my hearing","1","pagi|petang","sughra"
+"28","28","Kesejahteraan Penglihatan","dua","","","اللَّهُمَّ عَافِنِي فِي بَصَرِي","","Sejahterakan penglihatanku","Grant me health in my sight","1","pagi|petang","sughra"
 
-23,23,Lindung Kufur & Fakir,dua,,,اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ,,Aku berlindung dari kufur dan kemiskinan,I seek refuge from disbelief and poverty,1,pagi|petang,sughra
-24,24,Lindung Azab Kubur,dua,,,وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ,,Aku berlindung dari azab kubur,I seek refuge from the punishment of the grave,1,pagi|petang,sughra
+"29","29","Lindung Kufur & Fakir","dua","","","اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ","","Aku berlindung dari kufur dan kemiskinan","I seek refuge from disbelief and poverty","1","pagi|petang","sughra"
+"30","30","Lindung Azab Kubur","dua","","","وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ","","Aku berlindung dari azab kubur","I seek refuge from the punishment of the grave","1","pagi|petang","sughra"
 
-25,25,Tawakkal,dua,,,حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ,,Cukuplah Allah bagiku; kepada-Nya aku bertawakkal,Sufficient for me is Allah; upon Him I rely,1,pagi|petang,sughra
+"31","31","Tawakkal","dua","","","حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ عَلَيْهِ تَوَكَّلْتُ","","Cukuplah Allah bagiku","Sufficient for me is Allah","1","pagi|petang","sughra"
 
-26,26,Kecukupan,dua,,,مَا شَاءَ اللَّهُ لَا قُوَّةَ إِلَّا بِاللَّهِ,,Apa yang Allah kehendaki; tiada daya melainkan dengan-Nya,What Allah wills; there is no power except with Him,1,pagi|petang,sughra
+"32","32","Fitratul Islam (Pagi)","dua","","","أَصْبَحْنَا عَلَىٰ فِطْرَةِ الْإِسْلَامِ وَعَلَىٰ كَلِمَةِ الْإِخْلَاصِ","","Kami memasuki pagi di atas fitrah Islam","We enter the morning upon the fitrah of Islam","1","pagi","sughra"
+"33","33","Fitratul Islam (Petang)","dua","","","أَمْسَيْنَا عَلَىٰ فِطْرَةِ الْإِسْلَامِ وَعَلَىٰ كَلِمَةِ الْإِخْلَاصِ","","Kami memasuki petang di atas fitrah Islam","We enter the evening upon the fitrah of Islam","1","petang","sughra"
 
-27,27,Fitratul Islam (Pagi),dua,,,أَصْبَحْنَا عَلَىٰ فِطْرَةِ الْإِسْلَامِ وَعَلَىٰ كَلِمَةِ الْإِخْلَاصِ وَعَلَىٰ دِينِ نَبِيِّنَا مُحَمَّدٍ ﷺ وَعَلَىٰ مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا وَمَا كَانَ مِنَ الْمُشْرِكِينَ,,Kami memasuki pagi di atas fitrah Islam dan kalimah ikhlas,We enter the morning upon the fitrah of Islam and the word of sincerity,1,pagi,sughra
+"34","34","Sayyidul Istighfar – 1","dua","","","اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ","","Engkaulah Tuhanku","You are my Lord","1","pagi|petang","sughra"
+"35","35","Sayyidul Istighfar – 2","dua","","","خَلَقْتَنِي وَأَنَا عَبْدُكَ","","Engkau menciptaku dan aku hamba-Mu","You created me and I am Your servant","1","pagi|petang","sughra"
+"36","36","Sayyidul Istighfar – 3","dua","","","فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ","","Ampunkan aku","So forgive me","1","pagi|petang","sughra"
 
-28,28,Fitratul Islam (Petang),dua,,,أَمْسَيْنَا عَلَىٰ فِطْرَةِ الْإِسْلَامِ وَعَلَىٰ كَلِمَةِ الْإِخْلَاصِ وَعَلَىٰ دِينِ نَبِيِّنَا مُحَمَّدٍ ﷺ وَعَلَىٰ مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا وَمَا كَانَ مِنَ الْمُشْرِكِينَ,,Kami memasuki petang di atas fitrah Islam dan kalimah ikhlas,We enter the evening upon the fitrah of Islam and the word of sincerity,1,petang,sughra
+"37","37","Istighfar Ringkas","dua","","","أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ","","Aku memohon keampunan Allah","I seek forgiveness from Allah","3","pagi|petang","sughra"
+"38","38","Selawat Nabi","dua","","","اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ","","Selawat ke atas Nabi Muhammad","Blessings upon Prophet Muhammad","1","pagi|petang","sughra"
 
-29,29,Sayyidul Istighfar (1),dua,,,اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ,,Ya Allah Engkaulah Tuhanku, tiada Tuhan selain Engkau,O Allah You are my Lord; there is no deity except You,1,pagi|petang,sughra
-30,30,Sayyidul Istighfar (2),dua,,,وَأَنَا عَلَىٰ عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ,,Aku berpegang pada janji-Mu semampuku,I abide by Your covenant as best I can,1,pagi|petang,sughra
-31,31,Sayyidul Istighfar (3),dua,,,أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ,,Aku berlindung dari kejahatan perbuatanku,I seek refuge from the evil I have done,1,pagi|petang,sughra
-32,32,Sayyidul Istighfar (4),dua,,,أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ بِذَنْبِي,,Aku mengakui nikmat-Mu dan dosaku,I acknowledge Your favor and my sin,1,pagi|petang,sughra
-33,33,Sayyidul Istighfar (5),dua,,,فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ,,Ampunkan aku; tiada yang mengampuni dosa selain Engkau,So forgive me; none forgives sins except You,1,pagi|petang,sughra
-
-34,34,Istighfar Ringkas,dua,,,أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ,,Aku memohon ampun kepada Allah Yang Maha Agung,I seek forgiveness from Allah the Almighty,3,pagi|petang,sughra
-
-35,35,Selawat Nabi,dua,,,اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ,,Ya Allah limpahkan selawat ke atas Nabi Muhammad,O Allah send blessings upon Prophet Muhammad,1,pagi|petang,sughra
-
-36,36,Tasbih,dua,,,سُبْحَانَ اللَّهِ,,Maha Suci Allah,Glory be to Allah,33,pagi|petang,sughra
-37,37,Tahmid,dua,,,الْحَمْدُ لِلَّهِ,,Segala puji bagi Allah,All praise is for Allah,33,pagi|petang,sughra
-38,38,Takbir,dua,,,اللَّهُ أَكْبَرُ,,Allah Maha Besar,Allah is the Greatest,33,pagi|petang,sughra
-
-39,39,Tahlil,dua,,,لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ,,Tiada Tuhan selain Allah Yang Esa,There is no deity except Allah alone,1,pagi|petang,sughra
+"39","39","Tasbih","dua","","","سُبْحَانَ اللَّهِ","","Maha Suci Allah","Glory be to Allah","33","pagi|petang","sughra"
+"40","40","Tahmid","dua","","","الْحَمْدُ لِلَّهِ","","Segala puji bagi Allah","All praise is for Allah","33","pagi|petang","sughra"
+"41","41","Takbir","dua","","","اللَّهُ أَكْبَرُ","","Allah Maha Besar","Allah is the Greatest","33","pagi|petang","sughra"
+"42","42","Tahlil","dua","","","لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ","","Tiada Tuhan selain Allah","There is no deity except Allah","1","pagi|petang","sughra"
