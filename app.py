@@ -10,7 +10,7 @@ from streamlit_javascript import st_javascript
 # ==========================================
 st.set_page_config(
     page_title="Mathurat Ticker",
-    page_icon="📿",
+    page_icon="➕",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
