@@ -1,11 +1,13 @@
 import streamlit as st
 import pandas as pd
 import requests
-from datetime import datetime
+import datetime
+import io
+from streamlit_javascript import st_javascript
 
-# =================================================
-# PAGE CONFIG
-# =================================================
+# ==========================================
+# 1. CONFIG & CSS
+# ==========================================
 st.set_page_config(
     page_title="Mathurat Ticker",
     page_icon="📿",
@@ -13,292 +15,210 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# =================================================
-# CSS (MOBILE FIRST)
-# =================================================
+# Custom CSS for Mobile-First, Fixed Header/Footer, and Floating Button
 st.markdown("""
 <style>
-/* Reset */
-html, body {
-  margin: 0;
-  padding: 0;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef&display=swap');
+    
+    .main {
+        padding-top: 60px !important;
+        padding-bottom: 100px !important;
+    }
 
-st.components.v1.html("""
-<div class="fixed-header">
-  <div class="nav">
-    <button onclick="window.parent.postMessage('prev_clicked','*')">◀ Prev</button>
-    <button onclick="window.parent.postMessage('home_clicked','*')">🏠 Home</button>
-    <button onclick="window.parent.postMessage('next_clicked','*')">Next ▶</button>
-  </div>
-</div>
-""", height=0)
+    /* Fixed Header Navigation */
+    div[data-testid="stVerticalBlock"] > div:has(div.nav-container) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        background-color: #ffffff;
+        border-bottom: 1px solid #ddd;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+        div[data-testid="stVerticalBlock"] > div:has(div.nav-container) {
+            background-color: #0e1117;
+            border-bottom: 1px solid #333;
+        }
+    }
 
-st.components.v1.html("""
-<button id="gundal-btn">📿</button>
-<script>
-document.getElementById("gundal-btn").onclick = function() {
-  window.parent.postMessage("gundal_clicked","*");
-};
-</script>
-""", height=0)
+    .arabic-text {
+        font-family: 'Amiri', serif;
+        font-size: 32px;
+        text-align: center;
+        direction: rtl;
+        line-height: 2.2;
+        margin-bottom: 20px;
+    }
+    
+    .section-title {
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        color: #888;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
 
-/* ===== Fixed Header ===== */
-.fixed-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 56px;
-  background: #ffffff;
-  z-index: 9999;
-  border-bottom: 1px solid #eaeaea;
-}
+    /* Fixed Footer */
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        color: #333;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        border-top: 1px solid #ddd;
+        z-index: 998;
+    }
+    @media (prefers-color-scheme: dark) {
+        .footer { background-color: #161b22; color: #ccc; border-top: 1px solid #333; }
+    }
 
-.fixed-header .nav {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  padding: 8px 10px;
-}
+    /* FAB CSS */
+    div[data-testid="stVerticalBlock"] > div:last-child div.stButton > button {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        border: none;
+        z-index: 1000;
+    }
 
-.fixed-header button {
-  background: #f7f9f8;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 8px 6px;
-  font-size: 13px;
-}
-
-/* ===== Page Body ===== */
-.page-body {
-  margin-top: 64px;
-  padding: 0 14px 100px 14px;
-}
-
-/* ===== Arabic Text ===== */
-.arabic {
-  font-size: 28px;
-  line-height: 2.1;
-  text-align: center;
-  margin: 24px 0;
-}
-
-/* ===== Translation ===== */
-.translation {
-  font-size: 14px;
-  color: #555;
-  text-align: center;
-  margin-top: 12px;
-}
-
-/* ===== Floating Gundal ===== */
-#gundal-btn {
-  position: fixed;
-  bottom: 84px;
-  right: 18px;
-  width: 60px;
-  height: 60px;
-  background: #4f7f6f;
-  color: white;
-  font-size: 26px;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-  z-index: 9999;
-}
-
-/* ===== Footer ===== */
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #f7f9f8;
-  border-top: 1px solid #eaeaea;
-  text-align: center;
-  padding: 10px;
-  font-size: 13px;
-}
+    #MainMenu, footer, header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-# =================================================
-# CONSTANTS
-# =================================================
-QURAN_API = "https://api.alquran.cloud/v1/ayah"
-DONATION_LINK = "https://www.bizappay.my/qIKzmsvfiX"
+# ==========================================
+# 2. DATA LAYER
+# ==========================================
+def load_data():
+    csv_data = """id,order,title,type,surah,ayah,arabic,transliteration,translation_ms,translation_en,repeat,session,set
+1,1,Al-Fatihah,quran,1,1,,Bismillah...,Dengan nama Allah...,In the name of Allah...,1,both,both
+2,2,Ayatul Kursi,quran,2,255,,Allahu la ilaha...,Allah tiada Tuhan...,Allah! There is no deity...,1,both,both
+3,3,Selawat Nabi,dua,,,اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّدٍ,,Ya Allah, limpahkan rahmat...,Oh Allah send blessings...,3,both,both
+4,4,Doa Pagi,dua,,,أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ,,Kami berpagi hari...,We have entered morning...,3,pagi,both
+5,5,Doa Petang,dua,,,أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ,,Kami berpetang hari...,We have entered evening...,3,petang,both
+"""
+    df = pd.read_csv(io.StringIO(csv_data))
+    df.fillna('', inplace=True)
+    return df
 
-# =================================================
-# SESSION STATE INIT
-# =================================================
-defaults = {
-    "page": "home",
-    "mathurat_set": None,
-    "session_time": None,
-    "start_time": None,
-    "end_time": None,
-    "data": [],
-    "index": 0,
-    "count": 0
-}
-
-for k, v in defaults.items():
-    if k not in st.session_state:
-        st.session_state[k] = v
-
-# =================================================
-# HELPERS
-# =================================================
-def detect_session():
-    return "pagi" if datetime.now().hour < 12 else "petang"
-
-@st.cache_data(show_spinner=False)
-def load_csv():
-    return pd.read_csv("mathurat.csv")
-
-@st.cache_data(show_spinner=False)
-def fetch_quran_ayah(surah, ayah):
+@st.cache_data
+def fetch_quran_text(surah, ayah):
+    url = f"http://api.alquran.cloud/v1/ayah/{surah}:{ayah}/editions/quran-uthmani"
     try:
-        r = requests.get(
-            f"{QURAN_API}/{int(surah)}:{int(ayah)}/quran-uthmani",
-            timeout=5
-        )
-        if r.status_code == 200:
-            return r.json()["data"]["text"]
-    except Exception:
-        pass
-    return "— Ayat gagal dimuatkan —"
+        response = requests.get(url, timeout=5)
+        return response.json()['data'][0]['text'] if response.status_code == 200 else "Error."
+    except: return "Connection error."
 
-def load_session_data():
-    df = load_csv()
-    filtered = df[
-        df["set"].str.contains(st.session_state.mathurat_set)
-        & df["session"].str.contains(st.session_state.session_time)
-    ].sort_values("order")
-    st.session_state.data = filtered.to_dict("records")
+# ==========================================
+# 3. DEVICE TIME COMPONENT (JS)
+# ==========================================
+# This gets the current hour from the user's browser
+device_hour = st_javascript("new Date().getHours()")
 
-def go_home():
-    for k in defaults:
-        st.session_state[k] = defaults[k]
+# ==========================================
+# 4. STATE MANAGEMENT & LOGIC
+# ==========================================
+if 'page' not in st.session_state: st.session_state.page = 'landing'
+if 'current_index' not in st.session_state: st.session_state.current_index = 0
+if 'tally_count' not in st.session_state: st.session_state.tally_count = 0
 
-def next_item(force=False):
-    item = st.session_state.data[st.session_state.index]
-    if force or st.session_state.count >= item["repeat"]:
-        if st.session_state.index < len(st.session_state.data) - 1:
-            st.session_state.index += 1
-            st.session_state.count = 0
-        else:
-            st.session_state.end_time = datetime.now()
-            st.session_state.page = "done"
+def start_reading(mathurat_set):
+    # Capture timestamp based on server but we will use device_hour for session logic
+    st.session_state.start_time = datetime.datetime.now()
+    
+    # Session Detection (Using device hour captured via JS)
+    # Default to 8 (morning) if JS hasn't returned yet
+    hour = device_hour if device_hour is not None else 8
+    time_session = 'pagi' if 5 <= hour < 15 else 'petang'
+    
+    raw_df = load_data()
+    # Filtering logic
+    mask = ((raw_df['session'] == 'both') | (raw_df['session'] == time_session)) & \
+           ((raw_df['set'] == 'both') | (raw_df['set'] == mathurat_set))
+    
+    st.session_state.df_active = raw_df[mask].sort_values('order').reset_index(drop=True)
+    st.session_state.page = 'reading'
 
-# =================================================
-# HEADER
-# =================================================
-st.title("Mathurat Ticker")
-st.caption("Baca tanpa lupa.")
+# Navigation functions
+def go_next():
+    if st.session_state.current_index < len(st.session_state.df_active) - 1:
+        st.session_state.current_index += 1
+        st.session_state.tally_count = 0
+    else: st.session_state.page = 'end'
 
-# =================================================
-# HOME PAGE
-# =================================================
-if st.session_state.page == "home":
+def handle_gundal(repeat):
+    st.session_state.tally_count += 1
+    if st.session_state.tally_count >= repeat: go_next()
 
-    st.subheader("Pilih bacaan")
-    col1, col2 = st.columns(2)
+# ==========================================
+# 5. UI RENDERING
+# ==========================================
 
-    if col1.button("Mathurat Sugra", use_container_width=True):
-        st.session_state.mathurat_set = "sughra"
+if st.session_state.page == 'landing':
+    st.title("Mathurat Ticker")
+    st.caption("Tagline: Baca tanpa lupa.")
+    mode = st.radio("Pilih Set:", ["sughra", "kubra"])
+    if st.button("START", type="primary", use_container_width=True):
+        start_reading(mode)
+        st.rerun()
 
-    if col2.button("Mathurat Kubra", use_container_width=True):
-        st.session_state.mathurat_set = "kubra"
-
-    if st.session_state.mathurat_set:
-        st.session_state.session_time = detect_session()
-        st.info(f"Sesi bacaan: {st.session_state.session_time.capitalize()}")
-
-        if st.button("Start", type="primary", use_container_width=True):
-            st.session_state.start_time = datetime.now()
-            load_session_data()
-            st.session_state.page = "read"
-
-# =================================================
-# READING PAGE
-# =================================================
-elif st.session_state.page == "read":
-
-    # Fixed Header Navigation
-    st.markdown('<div class="nav-header">', unsafe_allow_html=True)
-    nav1, nav2, nav3 = st.columns(3)
-
-    with nav1:
-        if st.button("◀ Previous", use_container_width=True):
-            if st.session_state.index > 0:
-                st.session_state.index -= 1
-                st.session_state.count = 0
-
-    with nav2:
-        if st.button("🏠 Home", use_container_width=True):
-            go_home()
-
-    with nav3:
-        if st.button("Next ▶", use_container_width=True):
-            next_item(force=True)
-
-    st.markdown('</div>', unsafe_allow_html=True)
+elif st.session_state.page == 'reading':
+    # Fixed Header
+    st.markdown('<div class="nav-container"></div>', unsafe_allow_html=True)
+    h_col1, h_col2, h_col3 = st.columns(3)
+    with h_col1: 
+        if st.button("⬅", use_container_width=True): 
+            st.session_state.current_index = max(0, st.session_state.current_index - 1)
+            st.session_state.tally_count = 0
+            st.rerun()
+    with h_col2: 
+        if st.button("🏠", use_container_width=True): 
+            st.session_state.page = 'landing'
+            st.rerun()
+    with h_col3: 
+        if st.button("➡", use_container_width=True): 
+            go_next()
+            st.rerun()
 
     # Content
-    st.markdown('<div class="page-content">', unsafe_allow_html=True)
-
-    item = st.session_state.data[st.session_state.index]
-    st.subheader(item["title"])
-
-    if item["type"] == "quran":
-        arabic = fetch_quran_ayah(item["surah"], item["ayah"])
-    else:
-        arabic = item["arabic"]
-
-    st.markdown(
-        f"<div style='text-align:center; font-size:28px; line-height:2'>{arabic}</div>",
-        unsafe_allow_html=True
-    )
-
-    with st.expander("Transliteration"):
-        st.write(item.get("transliteration", ""))
-
+    item = st.session_state.df_active.iloc[st.session_state.current_index]
+    st.markdown(f'<div class="section-title">{item["title"]}</div>', unsafe_allow_html=True)
+    
+    arabic = fetch_quran_text(item['surah'], item['ayah']) if item['type'] == 'quran' else item['arabic']
+    st.markdown(f'<div class="arabic-text">{arabic}</div>', unsafe_allow_html=True)
+    
     with st.expander("Terjemahan"):
-        st.write(item.get("translation_ms", ""))
-        st.write(item.get("translation_en", ""))
+        st.write(item['translation_ms'])
 
-    st.caption(f"Bacaan: {st.session_state.count} / {item['repeat']}")
+    # FAB / Gundal
+    rep = int(item['repeat'])
+    st.metric("Gundal", f"{st.session_state.tally_count} / {rep}")
+    
+    label = "✔" if st.session_state.tally_count + 1 >= rep else str(st.session_state.tally_count + 1)
+    if st.button(label, key="fab", on_click=handle_gundal, args=(rep,)):
+        pass
 
-    st.markdown('</div>', unsafe_allow_html=True)
+elif st.session_state.page == 'end':
+    dur = datetime.datetime.now() - st.session_state.start_time
+    st.success(f"Alhamdulillah. Selesai dalam {dur.seconds // 60}m {dur.seconds % 60}s.")
+    if st.button("Home"): 
+        st.session_state.page = 'landing'
+        st.rerun()
 
-    # Gundal Button
-    pressed = st.button("📿", key="gundal", help="Tandakan bacaan", type="primary")
-    if pressed:
-        st.session_state.count += 1
-        next_item()
-
-# =================================================
-# DONE PAGE
-# =================================================
-elif st.session_state.page == "done":
-
-    duration = st.session_state.end_time - st.session_state.start_time
-    mins, secs = divmod(int(duration.total_seconds()), 60)
-
-    st.success("Alhamdulillah. Bacaan selesai.")
-    st.write(f"Tempoh masa yang diambil ialah **{mins} minit {secs} saat**")
-
-    if st.button("Kembali ke Home"):
-        go_home()
-
-# =================================================
-# FOOTER
-# =================================================
-st.markdown(
-    f"""
-    <div class="footer">
-        ❤️ <a href="{DONATION_LINK}" target="_blank">Support Us</a>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown('<div class="footer">Support Us | <a href="https://www.bizappay.my/qIKzmsvfiX">Donate</a></div>', unsafe_allow_html=True)
